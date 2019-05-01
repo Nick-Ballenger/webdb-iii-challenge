@@ -34,8 +34,25 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-//Add Cohort
+//Get by ID
+router.get('/:id/students', async (req, res) => {
+    
+    try {
+      const students = await db('students')
+        .where({ cohort_id: req.params.id })
+      res.status(200).json(students);
+    } 
+    
+    catch (error) {
+      res.status(500).json({ error: 'Something went wrong getting data from server' });
+    }
+  });
 
+
+
+
+
+//Add Cohort
 router.post('/', async (req, res) => {
     
     try {
