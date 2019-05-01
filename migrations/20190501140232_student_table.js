@@ -12,6 +12,13 @@ exports.up = function(knex, Promise) {
     .inTable('cohorts') // table
     .onDelete('CASCADE')
     .onUpdate('CASCADE');
+
+    tbl
+    .string('cohort')
+    .references('name') // column
+    .inTable('cohorts') // table
+    .onDelete('CASCADE')
+    .onUpdate('CASCADE');
     
     tbl.timestamps(true,true)
     })
